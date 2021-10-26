@@ -15,9 +15,10 @@ public class Main extends ApplicationAdapter {
 	static Random r = new Random();
 
 	//TODO: Game Lists
-	ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	ArrayList<Button> buttons = new ArrayList<Button>();
-	ArrayList<Cannon> cannons = new ArrayList<Cannon>();
+	static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+	static ArrayList<Button> buttons = new ArrayList<Button>();
+	static ArrayList<Cannon> cannons = new ArrayList<Cannon>();
+	static  ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//Runs once when the application starts
 	@Override
@@ -36,6 +37,7 @@ public class Main extends ApplicationAdapter {
 		for(Zombie z :zombies) z.draw(batch);
 		for(Cannon c :cannons) c.draw(batch);
 		for(Button b :buttons) b.draw(batch);
+		for(Bullet b :bullets) b.draw(batch);
 		batch.end();
 	}
 
@@ -44,15 +46,15 @@ public class Main extends ApplicationAdapter {
 		for(Zombie z :zombies) z.update();
 		for(Cannon c :cannons) c.update();
 		for(Button b :buttons) b.update();
+		for(Bullet b :bullets) b.update();
 
-		spawn_zombies();
 		Cleanup();
-
-		System.out.println(cannons.size());
+		spawn_zombies();
 	}
 
 	void Cleanup(){
 		for(Zombie z :zombies) if (!z.active){zombies.remove(z); break;}
+		for(Bullet b :bullets) if (!b.active){bullets.remove(b); break;}
 	}
 
 	void tap(){

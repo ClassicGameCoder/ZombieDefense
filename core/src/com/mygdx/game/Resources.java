@@ -27,6 +27,9 @@ public class Resources {
     static Texture cannon_laser = new Texture(Gdx.files.internal("laserCannon.png"));
     static Texture cannon_mounted = new Texture(Gdx.files.internal("mountedCannon.png"));
 
+    //TODO: BULLETS
+    static Texture bullet = new Texture(Gdx.files.internal("Bullet.png"));
+
     //TODO: ZOMBIES
     static Texture zombie = new Texture(Gdx.files.internal("Zombies.png"));
     static Texture zombie_dif = new Texture(Gdx.files.internal("DifZombies.png"));
