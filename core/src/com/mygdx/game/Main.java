@@ -13,6 +13,7 @@ public class Main extends ApplicationAdapter {
 	//TODO: Game variables/objects
 	SpriteBatch batch;
 	static Random r = new Random();
+	static  String current_type = "";
 
 	//TODO: Game Lists
 	static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
@@ -61,9 +62,38 @@ public class Main extends ApplicationAdapter {
 		if(Gdx.input.justTouched()){
 			int x = Gdx.input.getX(), y = Gdx.graphics.getHeight() - Gdx.input.getY();
 
+			for(Button b: buttons) {
+				if(b.t != null && !b.t.hidden && b.t.close.hitbox().contains(x, y)) {b.t.hidden = true; return;}
+				if(b.t != null && !b.t.hidden && b.t.hitbox().contains(x, y)) return;
+				if (b.hitbox().contains(x, y)) {
+					if (b.locked) {
+						if (b.t.hidden) {
+							hidetooltips();
+							b.t.hidden = false;
+						} else {
+							b.locked = false;
+							b.t.hidden = true;
+						}
+						return;
+					} else {
+						deselect();
+						b.selected = true;
+						current_type = b.type;
+					}
+					return;
+				}
+			}
+
 			for(Cannon c : cannons) if(c.hitbox().contains(x, y)) return;
-			if(buildable(x, y)) cannons.add(new Cannon("fire", x, y));
+			if(buildable(x, y)) cannons.add(new Cannon(current_type, x, y));
 		}
+	}
+
+	void deselect(){
+		for(Button b : buttons) b.selected = false;
+	}
+	void hidetooltips(){
+		for(Button b: buttons) if(b.t != null) b.t.hidden = true;
 	}
 
 	boolean buildable(int x, int y){
@@ -75,9 +105,11 @@ public class Main extends ApplicationAdapter {
 	void setup(){
 		Tables.init();
 		spawn_zombies();
-		for(int i = 0; i<5; i++){
-			buttons.add(new Button("bbb",i*100 + 50,525));
-		}
+		buttons.add(new Button("fire",buttons.size() * 70 + 50,525));
+		buttons.add(new Button("double",buttons.size() * 70 + 50,525));
+		buttons.add(new Button("laser",buttons.size() * 70 + 50,525));
+		buttons.add(new Button("bbb",buttons.size() * 70 + 50,525));
+		buttons.add(new Button("super",buttons.size() * 70 + 50,525));
 	}
 
 	void spawn_zombies(){

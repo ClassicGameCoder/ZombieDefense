@@ -25,6 +25,7 @@ public class Tables {
         button_resources.put("pause", Resources.button_pause);
         button_resources.put("start", Resources.button_start);
         button_resources.put("exit", Resources.button_exit);
+        button_resources.put("close", Resources.button_close);
 
         zombie_resources.put("dif", Resources.zombie_dif);
         zombie_resources.put("fast", Resources.zombie_fast);

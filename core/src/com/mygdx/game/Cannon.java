@@ -9,6 +9,7 @@ public class Cannon {
     Sprite sprite;
     int x, y, w, h;
     String type;
+    int counter = 0, delay = 30;
 
     Cannon(String type, int x, int y){
         sprite = new Sprite(Tables.cannon_resources.get(type) == null ? Resources.cannon : Tables.cannon_resources.get(type));
@@ -30,6 +31,8 @@ public class Cannon {
     }
 
     void fire(){
+        if(counter++ <delay) return;
+        counter = 0;
         Main.bullets.add(new Bullet("bbb", x + w/2, y + h/2));
     }
 
@@ -39,7 +42,7 @@ public class Cannon {
     Rectangle hitbox(){ return new Rectangle(x, y, w, h); }
 
     float calc_angle(){
-        float zx = Main.zombies.get(0).x - (float)(Main.zombies.get(0).w/2), zy = Main.zombies.get(0).y - (float)(Main.zombies.get(0).h/2);
+        float zx = Main.zombies.get(0).x + (float)(Main.zombies.get(0).w/2), zy = Main.zombies.get(0).y + (float)(Main.zombies.get(0).h/2);
         return (float)Math.toDegrees(Math.atan((y - zy)/(x - zx)) + (x >= zx ? Math.PI : 0));
     }
 }

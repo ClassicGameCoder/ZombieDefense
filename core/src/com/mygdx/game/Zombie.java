@@ -5,8 +5,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import java.awt.Rectangle;
+
 public class Zombie {
-    int x, y, w, h, speed;
+    int x, y, w, h, speed, hp;
     String type;
     boolean active = true;
 
@@ -15,6 +17,7 @@ public class Zombie {
     TextureRegion[] frames;
     TextureRegion frame;
     float frame_time;
+    Rectangle hitbox(){ return new Rectangle(x, y, w, h); }
 
     Zombie(String type, int x, int y, int speed){
         this.type = type;
@@ -24,6 +27,7 @@ public class Zombie {
 
         w = 50;
         h = 50;
+        hp = 5;
 
         prep_animations();
     }
@@ -35,8 +39,8 @@ public class Zombie {
     }
 
     void update(){
-        active = x >= 0;
         x -= speed;
+        active = x >= 0 && hp > 0;
     }
 
     void prep_animations(){
