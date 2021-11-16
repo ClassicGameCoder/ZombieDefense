@@ -42,6 +42,18 @@ public class ToolTip {
             layout.setText(font, " " + s);
             rtx += layout.width;
         }
+
+        font.getData().setScale(1.5f);
+        font.setColor(Color.BLACK);
+        font.draw(batch, "To Unlock: " + ((Tables.values.get("unlock_" + type)) == null ? "0": Tables.values.get("unlock_" + type)), x + 22 + 1, y + 50 - 1);
+        font.setColor(Color.GOLD);
+        font.draw(batch, "To Unlock: " + ((Tables.values.get("unlock_" + type)) == null ? "0": Tables.values.get("unlock_" + type)), x + 22, y + 50);
+        font.getData().setScale(1f);
+
+        font.setColor(Color.BLACK);
+        font.draw(batch, "(Tap Again to Unlock)", x + 35 + 1, y + 20 - 1);
+        font.setColor(Color.GRAY);
+        font.draw(batch, "(Tap Again to Unlock)", x + 35, y + 20);
     }
 
     Rectangle hitbox() {return new Rectangle(x, y, w, h);}

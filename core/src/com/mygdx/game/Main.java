@@ -115,7 +115,7 @@ public class Main extends ApplicationAdapter {
 	void spawn_zombies(){
 		if(!zombies.isEmpty()) return;
 		for(int i = 0; i<15; i++){
-			zombies.add(new Zombie("zzz",i*30 + 1024, r.nextInt(450), 3));
+			zombies.add(new Zombie("zzz",i*30 + 1024, r.nextInt(450)));
 		}
 	}
 

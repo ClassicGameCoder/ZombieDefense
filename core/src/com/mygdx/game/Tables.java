@@ -8,6 +8,8 @@ public class Tables {
     static HashMap<String, Texture> cannon_resources =  new HashMap<String, Texture>();
     static HashMap<String, Texture> button_resources =  new HashMap<String, Texture>();
     static HashMap<String, Texture> zombie_resources =  new HashMap<String, Texture>();
+    static HashMap<String, String> tooltips =  new HashMap<String, String>();
+    static HashMap<String, Integer> values =  new HashMap<String, Integer>();
 
     static void init(){
         cannon_resources.put("fire", Resources.cannon_fire);
@@ -31,5 +33,45 @@ public class Tables {
         zombie_resources.put("fast", Resources.zombie_fast);
         zombie_resources.put("speedy", Resources.zombie_speedy);
         zombie_resources.put("riot", Resources.zombie_riot);
+
+        tooltips.put("fire", "Fires high damage bullets at a high rate of fire.");
+        tooltips.put("super", "Fires low damage bullets at a low rate of fire. Does not degrade.");
+        tooltips.put("double", "Fires two low damage bullets at a low rate of fire.");
+        tooltips.put("laser", "Fires one giant bullet at a very slow rate of fire.");
+        tooltips.put("mounted", "Fires low damage bullets at a low rate of fire.");
+
+        //CANNON PLACEMENT COSTS
+        values.put("place_fire", 30);
+        values.put("place_super", 25);
+        values.put("place_double", 20);
+        values.put("place_laser", 100);
+
+        //CANNON UNLOCK COSTS
+        values.put("unlock_fire", 300);
+        values.put("unlock_super", 500);
+        values.put("unlock_double", 250);
+        values.put("unlock_laser", 1000);
+        values.put("unlock_mounted", 300);
+
+        //CANNON FIRE DELAYS
+        values.put("delay_fire", 10);
+        values.put("delay_double", 40);
+        values.put("delay_laser", 100);
+
+        //ZOMBIE SPEED
+        values.put("speed_dif", 1);
+        values.put("speed_speedy", 5);
+        values.put("speed_fast", 3);
+        values.put("speed_riot", 1);
+
+        //ZOMBIE HEALTH
+        values.put("health_dif", 4);
+        values.put("health_speedy", 2);
+        values.put("health_fast", 3);
+        values.put("health_riot", 10);
+
+        //ANIMATION COLUMNS
+        values.put("columns_laser", 16);
+        values.put("columns_speedy", 6);
     }
 }
