@@ -8,10 +8,14 @@ public class Tables {
     static HashMap<String, Texture> cannon_resources =  new HashMap<String, Texture>();
     static HashMap<String, Texture> button_resources =  new HashMap<String, Texture>();
     static HashMap<String, Texture> zombie_resources =  new HashMap<String, Texture>();
+    static HashMap<String, Texture> resources =  new HashMap<String, Texture>();
     static HashMap<String, String> tooltips =  new HashMap<String, String>();
     static HashMap<String, Integer> values =  new HashMap<String, Integer>();
 
     static void init(){
+        resources.put("effect_boom", Resources.boom);
+        resources.put("effect_click", Resources.click);
+
         cannon_resources.put("fire", Resources.cannon_fire);
         cannon_resources.put("super", Resources.cannon_super);
         cannon_resources.put("double", Resources.cannon_double);
@@ -28,6 +32,7 @@ public class Tables {
         button_resources.put("start", Resources.button_start);
         button_resources.put("exit", Resources.button_exit);
         button_resources.put("close", Resources.button_close);
+        button_resources.put("wall", Resources.button_wall);
 
         zombie_resources.put("dif", Resources.zombie_dif);
         zombie_resources.put("fast", Resources.zombie_fast);
@@ -73,5 +78,8 @@ public class Tables {
         //ANIMATION COLUMNS
         values.put("columns_laser", 16);
         values.put("columns_speedy", 6);
+        values.put("columns_boom", 7);
+        values.put("columns_click", 4);
+
     }
 }
