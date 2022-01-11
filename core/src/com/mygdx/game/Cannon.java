@@ -30,7 +30,7 @@ public class Cannon {
         cols = Tables.values.get("columns_" + type) == null ? 1 : Tables.values.get("columns_" + type);
         w = (Tables.cannon_resources.get(type) == null ? Resources.cannon : Tables.cannon_resources.get(type)).getWidth() / cols;
         h = (Tables.cannon_resources.get(type) == null ? Resources.cannon : Tables.cannon_resources.get(type)).getHeight() / rows;
-        this.hp = Tables.values.get("health_" + type) == null ? 75 : Tables.values.get("health_" + type); //Ammo system
+        this.hp = Tables.values.get("health_" + type) == null ? 200 : Tables.values.get("health_" + type); //Ammo system
         chunk = (float) w / hp;
         this.x = gridlock(x - w/2);
         this.y = gridlock(y - h/2);
@@ -59,7 +59,7 @@ public class Cannon {
     void fire(){
         if(counter++ <delay) return;
         counter = 0;
-        Main.bullets.add(new Bullet("bbb", x + w/2, y + h/2));
+        ZTD.bullets.add(new Bullet("bbb", x + w/2, y + h/2));
         damaged = hp-- < 0;
     }
 
@@ -71,7 +71,7 @@ public class Cannon {
     float calc_angle(){
        // float zx = Main.zombies.get(0).x + (float)(Main.zombies.get(0).w/2), zy = Main.zombies.get(0).y + (float)(Main.zombies.get(0).h/2);
         Zombie closest =  null;
-        for(Zombie z : Main.zombies){
+        for(Zombie z : ZTD.zombies){
             if(closest == null){ closest = z; continue;}
             float closest_dif = (float) Math.sqrt((x - closest.x) * (x - closest.x) + (y- closest.y) * (y - closest.y));
             float z_dif = (float) Math.sqrt((x - z.x) * (x - z.x) + (y- z.y) * (y - z.y));
