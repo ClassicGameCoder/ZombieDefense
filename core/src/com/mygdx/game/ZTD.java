@@ -45,8 +45,10 @@ public class ZTD {
 
         Cleanup();
         spawn_zombies();
+        Main.gameover = !(UI.life > 0);
 
     }
+
     void Cleanup(){
         for(Zombie z :zombies) if (!z.active){zombies.remove(z); break;}
         for(Bullet b :bullets) if (!b.active){bullets.remove(b); break;}
@@ -100,6 +102,7 @@ public class ZTD {
     void deselect(){
         for(Button b : buttons) b.selected = false;
     }
+
     void hidetooltips(){
         for(Button b: buttons) if(b.t != null) b.t.hidden = true;
     }
@@ -111,8 +114,21 @@ public class ZTD {
     }
 
     void setup(){
+        UI.money = 1000;
+        UI.life = 15;
+        UI.wave = 0;
+        UI.score = 0;
+
+        buttons.clear();
+        zombies.clear();
+        cannons.clear();
+        effects.clear();
+        walls.clear();
+        bullets.clear();
+
         Tables.init();
         spawn_zombies();
+
         buttons.add(new Button("fire",buttons.size() * 70 + 200,525));
         buttons.add(new Button("double",buttons.size() * 70 + 200,525));
         buttons.add(new Button("laser",buttons.size() * 70 + 200,525));

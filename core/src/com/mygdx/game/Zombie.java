@@ -48,6 +48,7 @@ public class Zombie {
     void update(){
         x -= speed;
         UI.score += hp > 0 ? 0 : (Tables.values.get("score_" + type) == null ? 1 : Tables.values.get("score_" + type));
+        UI.life -= x >= 0 ? 0 : 1;
         active = x >= 0 && hp > 0;
     }
 

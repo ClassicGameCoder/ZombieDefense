@@ -14,7 +14,7 @@ public class Main extends ApplicationAdapter {
 	SpriteBatch batch;
 	Start start;
 	About about_scene;
-	ZTD ztd;
+	static ZTD ztd;
 	GameEnds lose;
 	static boolean started = false;
 	static boolean about = false;

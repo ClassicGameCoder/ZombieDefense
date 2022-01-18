@@ -1,14 +1,15 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Start {
+public class Start extends Screen{
     mButton m1, m2, m3;
 
     Start(){
-        m1 = new mButton("start", (1024/2) - (mButton.bw/2), 325, mButton.bw, mButton.bh);
-        m2 = new mButton("about", (1024/2) - (mButton.bw/2), 200, mButton.bw, mButton.bh);
-        m3 = new mButton("exit", (1024/2) - (mButton.bw/2), 75, mButton.bw, mButton.bh);
+        m1 = new mButton("start", (1024/2) - (mButton.bw/2), 325, mButton.bw, mButton.bh, Color.BLUE);
+        m2 = new mButton("about", (1024/2) - (mButton.bw/2), 200, mButton.bw, mButton.bh, Color.DARK_GRAY);
+        m3 = new mButton("exit", (1024/2) - (mButton.bw/2), 75, mButton.bw, mButton.bh, Color.RED);
     }
 
     void tap(int x, int y){
